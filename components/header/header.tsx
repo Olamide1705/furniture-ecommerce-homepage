@@ -14,9 +14,9 @@ export default function Header() {
           <Image
             src="/logo.svg"
             alt="Logo"
-            width={24}
-            height={24}
-            className="h-4 w-12"
+            width={30}
+            height={30}
+            className="w-12 h-3"
           />
         </Link>
 
@@ -30,17 +30,25 @@ export default function Header() {
       </div>
 
       {/* Mobile */}
-      <div className="md:hidden flex">
-        <div>
+      <div className="md:hidden absolute top-0 left-0 w-full z-50 pt-3">
+        <div className="relative flex items-center px-4 py-4">
+          {/* Hamburger */}
           <button
             onClick={() => setSideBarOpen(true)}
-            className="text-white text-2xl px-2"
+            className="text-white text-2xl"
           >
             ☰
           </button>
 
-          <Link href="/">
-            <Image src="/logo.svg" alt="Logo" width={24} height={32} />
+          {/* Center Logo */}
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2">
+            <Image
+              src="/logo.svg"
+              alt="Logo"
+              width={24}
+              height={32}
+              className="w-15 h-auto"
+            />
           </Link>
         </div>
 
@@ -52,7 +60,7 @@ export default function Header() {
         )}
 
         <aside
-          className={`md:hidden fixed top-0 z-50 bg-white w-full transform transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "translate-x-full"}`}
+          className={`md:hidden flex items-center px-5 h-15 justify-between fixed top-0 z-[60 bg-white w-full transform transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "translate-x-full"}`}
         >
           <button
             className="text-2xl text-primary"
@@ -62,7 +70,7 @@ export default function Header() {
           </button>
 
           {/* Nav Links */}
-          <div className="flex text-black text-base">
+          <div className="flex gap-5 text-black text-base">
             <Link href="/" onClick={() => setSideBarOpen(false)}>
               home
             </Link>
