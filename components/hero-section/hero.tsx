@@ -58,7 +58,7 @@ export default function Hero() {
 
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, []);
+  }, [current]);
 
   return (
     <section className="relative grid grid-cols-1 lg:grid-cols-[60%_40%]">
