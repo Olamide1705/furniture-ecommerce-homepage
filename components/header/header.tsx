@@ -2,38 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Header() {
   const [sidebarOpen, setSideBarOpen] = useState(false);
-  const [direction, setDirection] = useState<"left" | "right">("right");
-
-  const next = () => {
-    setDirection("right");
-    setCurrent((c) => (c + 1) % slides.length);
-  };
-
-  const prev = () => {
-    setDirection("left");
-    setCurrent((c) => (c === 0 ? slides.length - 1 : c - 1));
-  };
-
-  /* Keyboard Navigation */
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
-    };
-
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, []);
 
   return (
     <header className="absolute top-0 left-0 z-50 w-full">
       {/* Desktop */}
       <div className="hidden md:flex items-center justify-between p-12 max-w-lg">
-        <Link href="/">
+        <div>
           <Image
             src="/logo.svg"
             alt="Logo"
@@ -41,7 +19,7 @@ export default function Header() {
             height={30}
             className="w-12 h-3"
           />
-        </Link>
+        </div>
 
         {/* Nav Links */}
         <div className="flex items-center space-x-8 text-white text-[18px] font-medium">
@@ -64,7 +42,7 @@ export default function Header() {
           </button>
 
           {/* Center Logo */}
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2">
+          <div className="absolute left-1/2 -translate-x-1/2">
             <Image
               src="/logo.svg"
               alt="Logo"
@@ -72,7 +50,7 @@ export default function Header() {
               height={32}
               className="w-15 h-auto"
             />
-          </Link>
+          </div>
         </div>
 
         {sidebarOpen && (
